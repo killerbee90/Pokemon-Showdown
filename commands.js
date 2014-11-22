@@ -286,7 +286,7 @@ var commands = exports.commands = {
 	atm: 'money',
 	money: function(target, room, user, connection, cmd) {
 		if (!this.canBroadcast()) return;
-		var broadcasting = false;
+		var broadcasting = true;
 		if (this.broadcasting) broadcasting = true;
 		var data = '';
 		if (!target) {
