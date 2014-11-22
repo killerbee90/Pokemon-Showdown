@@ -374,7 +374,9 @@ if (Config.crashguard) {
  * Start networking processes to be connected to
  *********************************************************/
 
-global.Sockets = require('./sockets.js');
+global.Sockets = require('./sockets.js'); 
+
+global.Bot = require('./bot.js');
 
 /*********************************************************
  * Set up our last global
@@ -390,8 +392,6 @@ global.Tools = require('./tools.js');
 Rooms.global.formatListText = Rooms.global.getFormatListText();
 
 global.TeamValidator = require('./team-validator.js'); 
-
-global.Bot = require('./bot.js');
 
 // load ipbans at our leisure
 fs.readFile('./config/ipbans.txt', function (err, data) {
