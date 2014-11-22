@@ -351,6 +351,7 @@ try {
 
 global.Cidr = require('./cidr.js');
 
+
 if (Config.crashguard) {
 	// graceful crash - allow current battles to finish before restarting
 	var lastCrash = 0;
