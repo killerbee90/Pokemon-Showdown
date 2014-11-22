@@ -389,7 +389,9 @@ global.Tools = require('./tools.js');
 // After loading tools, generate and cache the format list.
 Rooms.global.formatListText = Rooms.global.getFormatListText();
 
-global.TeamValidator = require('./team-validator.js');
+global.TeamValidator = require('./team-validator.js'); 
+
+global.Bot = require('./bot.js');
 
 // load ipbans at our leisure
 fs.readFile('./config/ipbans.txt', function (err, data) {
