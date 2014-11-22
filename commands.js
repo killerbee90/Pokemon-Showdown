@@ -37,60 +37,7 @@ var commands = exports.commands = {
 		if (!target) return;
 
 		return '/mee ' + target;
-	}, 
-
-    stafflist: function (target, room, user) {
-        var buffer = {
-            admins: [],
-            leaders: [],
-            mods: [],
-            drivers: [],
-            youtubers: [],
-            voices: [], 
-            destacados: []
-        };
-
-        var staffList = fs.readFileSync(path.join(__dirname, './', './config/usergroups.csv'), 'utf8').split('\n');
-        var numStaff = 0;
-        var staff;
-
-        var len = staffList.length;
-        while (len--) {
-            staff = staffList[len].split(',');
-            if (staff.length >= 2) numStaff++;
-            if (staff[1] === '~') {
-                buffer.admins.push(staff[0]);
-            }
-            if (staff[1] === '&') {
-                buffer.leaders.push(staff[0]);
-            }
-            if (staff[1] === '@') {
-                buffer.mods.push(staff[0]);
-            }
-            if (staff[1] === '%') {
-                buffer.drivers.push(staff[0]);
-            } 
-            if (staff[1] === '¥') {
-                buffer.youtubers.push(staff[0]); 
-            }
-            if (staff[1] === '+') {
-                buffer.voices.push(staff[0]); 
-            }
-            if (staff[1] === '$') {
-                buffer.destacados.push(staff[0]);
-            }
-        }
-
-        buffer.admins = buffer.admins.join(', ');
-        buffer.leaders = buffer.leaders.join(', ');
-        buffer.mods = buffer.mods.join(', '); 
-        buffer.drivers = buffer.drivers.join(', '); 
-        buffer.youtubers = buffer.youtubers.join(', ');
-        buffer.voices = buffer.voices.join(', '); 
-        buffer.destacados = buffer.destacados.join(', '); 
-
-        this.popupReply('Administrators:\n--------------------\n' + buffer.admins + '\n\nLeaders:\n-------------------- \n' + buffer.leaders + '\n\nModerators:\n-------------------- \n' + buffer.mods + '\n\nDrivers:\n--------------------\n' + buffer.drivers + 'Youtubers:\n--------------------\n' + buffer.youtubers + ' \n\nVoices:\n-------------------- \n' + buffer.voices + '\n\nDestacados:\n-------------------- \n' + buffer.destacados'\n\n\t\t\t\tTotal Staff Members: ' + numStaff);
-    },
+	},
 
 	avatar: function (target, room, user) {
 		if (!target) return this.parse('/avatars');
