@@ -127,7 +127,7 @@ exports.simulatorprocesses = 1;
 exports.inactiveuserthreshold = 1000 * 60 * 60;
 
 // Set this to true if you are using Pokemon Showdown on Heroku.
-exports.herokuhack = false;
+exports.herokuhack = true;
 
 // Custom avatars.
 // This allows you to specify custom avatar images for users on your server.
