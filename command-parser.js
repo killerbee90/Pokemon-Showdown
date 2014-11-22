@@ -125,7 +125,7 @@ function canTalk(user, room, connection, message) {
 			user.lastMessage = message;
 			user.lastMessageTime = Date.now();
 		}
-
+		if (!Bot.parse.processChatData(user, room, connection, message)) return false;
 		if (Config.chatfilter) {
 			return Config.chatfilter(user, room, connection, message);
 		}
