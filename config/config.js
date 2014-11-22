@@ -184,14 +184,14 @@ exports.appealurl = '';
 //     - potd: Set PotD.
 //     - forcewin: /forcewin command.
 //     - battlemessage: /a command.
-exports.groupsranking = [' ', '+', '%', '@', '\u2605', '#', '&', '~'];
+exports.groupsranking = [' ', '$', '+', '¥', '%', '@', '\u2605', '#', '&', '~'];
 exports.groups = {
 	'~': {
 		id: "admin",
 		name: "Administrator",
 		root: true,
 		globalonly: true,
-		rank: 7
+		rank: 9
 	},
 	'&': {
 		id: "leader",
@@ -207,7 +207,7 @@ exports.groups = {
 		disableladder: true,
 		globalonly: true,
 		tournamentsmanagement: true,
-		rank: 6
+		rank: 8
 	},
 	'#': {
 		id: "owner",
@@ -220,7 +220,7 @@ exports.groups = {
 		modchatall: true,
 		roomonly: true,
 		tournamentsmanagement: true,
-		rank: 5
+		rank: 7
 	},
 	'\u2605': {
 		id: "player",
@@ -230,7 +230,7 @@ exports.groups = {
 		modchat: true,
 		roomonly: true,
 		privateroom: true,
-		rank: 4
+		rank: 6
 	},
 	'@': {
 		id: "mod",
@@ -238,21 +238,20 @@ exports.groups = {
 		inherit: '%',
 		jurisdiction: 'u',
 		ban: true,
-		modchat: true,
 		roomvoice: true,
 		forcerename: true,
 		ip: true,
 		alts: '@u',
 		tournaments: true,
-		rank: 3
+		rank: 5
 	},
 	'%': {
 		id: "driver",
 		name: "Driver",
 		inherit: '+',
 		jurisdiction: 'u',
-		announce: true,
-		warn: true,
+		warn: true, 
+		modchat: true,
 		kick: true,
 		mute: true,
 		lock: true,
@@ -263,15 +262,33 @@ exports.groups = {
 		bypassblocks: 'u%@&~',
 		receiveauthmessages: true,
 		tournamentsmoderation: true,
-		rank: 2
+		rank: 4 
+	},
+	'¥': {
+		id: "youtuber",
+		name: "Youtuber",
+		inherit: ' ',
+		broadcast: true, 
+		announce: true,
+		joinbattle: true,
+		rank: 3
 	},
 	'+': {
 		id: "voice",
 		name: "Voice",
 		inherit: ' ',
 		broadcast: true,
+		joinbattle: true, 
+		tournamentsmanagement: true,
+		rank: 2
+	}, 
+	'$': {
+		id: "destacado",
+		name: "Destacado",
+		inherit: ' ',
+		broadcast: true,
 		joinbattle: true,
-		rank: 1
+		rank: 1 
 	},
 	' ': {
 		ip: 's',
