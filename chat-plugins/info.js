@@ -12,7 +12,7 @@ exports.commands = {
 			var name = Users.usergroups[u].slice(1);
 			if (!rankLists[rank]) rankLists[rank] = [];
 			rankLists[rank].push(name);
-		}
+		},
 
 		var buffer = [];
 		Object.keys(rankLists).sort(function (a, b) {
