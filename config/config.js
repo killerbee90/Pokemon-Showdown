@@ -205,7 +205,8 @@ exports.groups = {
 		rangeban: true,
 		potd: true,
 		disableladder: true,
-		globalonly: true,
+		globalonly: true, 
+		tournamentsmanagement: true,
 		rank: 8
 	},
 	'#': {
@@ -236,7 +237,8 @@ exports.groups = {
 		name: "Moderator",
 		inherit: '%',
 		jurisdiction: 'u',
-		ban: true,
+		ban: true, 
+		modchat: true,
 		roomvoice: true, 
 		roomdestacado: true,
 		forcerename: true,
