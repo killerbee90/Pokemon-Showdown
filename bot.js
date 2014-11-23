@@ -53,7 +53,7 @@ if (!botBannedWords.links) {
 }
 
 var config = {
-	name: 'Ultimate Bot',
+	name: 'Suicune Bot',
 	userid: function () {
 		return toId(this.name);
 	},
@@ -64,8 +64,7 @@ var config = {
 		1: 'warn',
 		2: 'mute',
 		3: 'hourmute',
-		4: 'hourmute',
-		5: 'lock'
+		4: 'ban',
 	},
 	privaterooms: ['staff'],
 	hosting: {},
