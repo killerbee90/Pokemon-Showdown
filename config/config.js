@@ -206,7 +206,6 @@ exports.groups = {
 		potd: true,
 		disableladder: true,
 		globalonly: true,
-		tournamentsmanagement: true,
 		rank: 8
 	},
 	'#': {
