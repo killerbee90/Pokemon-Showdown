@@ -250,8 +250,9 @@ exports.groups = {
 	'%': {
 		id: "driver",
 		name: "Driver",
-		inherit: '+',
-		jurisdiction: 'u',
+		inherit: '¥',
+		jurisdiction: 'u', 
+		announce: true,
 		warn: true, 
 		kick: true,
 		mute: true,
@@ -268,7 +269,7 @@ exports.groups = {
 	'¥': {
 		id: "youtuber",
 		name: "Youtuber",
-		inherit: ' ',
+		inherit: '+',
 		broadcast: true, 
 		announce: true,
 		joinbattle: true,
