@@ -69,6 +69,11 @@ var commands = exports.commands = {
 	ultimate: function (target, room, user) {
 		if (!this.canBroadcast()) return;
 		this.sendReplyBox("<strong> Ultimate Server </strong>");
+	},  
+	
+	admins: function (target, room, user) {
+		if (!this.canBroadcast()) return;
+		this.sendReplyBox("<strong><b><font color="#0000FF">Law Yuuichi</b></font><b><font color="#0040FF">Bryan AA</b></font><font color="#DF0101">Evilness</b></font><b><font color="#81F7D8">Lost Seso</b></font><b><font color="#FE2EF7">Klaymore</b></font>  </strong>");
 	},
 
 	r: 'reply',
