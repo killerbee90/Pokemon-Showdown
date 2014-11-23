@@ -66,9 +66,9 @@ var commands = exports.commands = {
 		this.sendReply("Use the Help room.");
 	}, 
 	
-	ultimateserver: 'ultimate',
 	ultimate: function (target, room, user) {
-		this.sendReply("Ultimate Server (Sin descripcion en commandos)");
+		if (!this.canBroadcast()) return;
+		this.sendReplyBox("<strong> Ultimate Server </strong>");
 	},
 
 	r: 'reply',
