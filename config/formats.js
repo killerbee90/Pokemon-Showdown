@@ -35,7 +35,15 @@ exports.Formats = [
 
 		ruleset: ['Pokemon', 'Standard Ubers', 'Swagger Clause', 'Team Preview'],
 		banlist: []
-	},
+	}, 
+	{
+		name: "Random Ubers",
+		section: "XY Singles",
+
+		searchShow: true,
+		team: 'randomUber',
+		ruleset: ['PotD', 'Pokemon', 'Sleep Clause Mod', 'HP Percentage Mod']
+        },
 	{
 		name: "UU",
 		section: "XY Singles",
