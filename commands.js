@@ -64,6 +64,11 @@ var commands = exports.commands = {
 	requesthelp: 'report',
 	report: function (target, room, user) {
 		this.sendReply("Use the Help room.");
+	}, 
+	
+	ultimateserver: 'ultimate',
+	ultimate: function (target, room, user) {
+		this.sendReply("Ultimate Server (Sin descripcion en commandos)");
 	},
 
 	r: 'reply',
