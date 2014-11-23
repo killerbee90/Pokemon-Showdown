@@ -253,7 +253,6 @@ exports.groups = {
 		inherit: '+',
 		jurisdiction: 'u',
 		warn: true, 
-		modchat: true,
 		kick: true,
 		mute: true,
 		lock: true,
