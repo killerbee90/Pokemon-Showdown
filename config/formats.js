@@ -37,14 +37,6 @@ exports.Formats = [
 		banlist: []
 	}, 
 	{
-		name: "Random Ubers",
-		section: "XY Singles",
-
-		searchShow: true,
-		team: 'randomUber',
-		ruleset: ['PotD', 'Pokemon', 'Sleep Clause Mod', 'HP Percentage Mod']
-        },
-	{
 		name: "UU",
 		section: "XY Singles",
 
@@ -73,14 +65,6 @@ exports.Formats = [
 		ruleset: ['Pokemon', 'Standard', 'Team Preview', 'Little Cup'],
 		banlist: ['Dragon Rage', 'Sonic Boom', 'Swagger', 'LC Uber', 'Gligar']
 	}, 
-        {
-		name: "Random LC",
-		section: "XY Singles",
-
-		searchShow: true,
-		team: 'randomLC',
-		ruleset: ['PotD', 'Pokemon', 'Sleep Clause Mod', 'HP Percentage Mod']
-	},
 
 	/*{
 		name: "CAP Plasmanta Playtest",
