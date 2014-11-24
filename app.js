@@ -345,6 +345,8 @@ global.Tournaments = require('./tournaments');
 
 global.Shop = require('./shop.js');
 
+global.DatabaseManager = require('./db_manager.js');
+
 try {
 	global.Dnsbl = require('./dnsbl.js');
 } catch (e) {
