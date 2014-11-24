@@ -1,8 +1,8 @@
-const pdDataFile = './log/shopmoney.json';
-const tcDataFile = './log/tcards.json';
-const symbolsDataFile = './log/symbolauth.json';
-const avatarsDataFile = './log/shopavatars.json';
-const botPhraseDataFile = './log/botphrases.json';
+const pdDataFile = './config/shopmoney.json';
+const tcDataFile = './config/tcards.json';
+const symbolsDataFile = './config/symbolauth.json';
+const avatarsDataFile = './config/shopavatars.json';
+const botPhraseDataFile = './config/botphrases.json';
 
 var fs = require('fs');
 

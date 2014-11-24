@@ -8,8 +8,8 @@
  *
  * @license MIT license
  */
-const botBannedWordsDataFile = './log/botbannedwords.json';
-const botBannedUsersDataFile = './log/botbannedusers.json';
+const botBannedWordsDataFile = './config/botbannedwords.json';
+const botBannedUsersDataFile = './config/botbannedusers.json';
 var fs = require('fs');
 
 if (!fs.existsSync(botBannedWordsDataFile))

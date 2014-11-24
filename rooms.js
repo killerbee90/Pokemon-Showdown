@@ -109,7 +109,7 @@ var GlobalRoom = (function () {
 
 		this.chatRoomData = [];
 		try {
-			this.chatRoomData = JSON.parse(fs.readFileSync('log/chatrooms.json'));
+			this.chatRoomData = JSON.parse(fs.readFileSync('config/chatrooms.json'));
 			if (!Array.isArray(this.chatRoomData)) this.chatRoomData = [];
 		} catch (e) {} // file doesn't exist [yet]
 
@@ -198,12 +198,12 @@ var GlobalRoom = (function () {
 				}
 				writing = true;
 				var data = JSON.stringify(self.chatRoomData).replace(/\{"title"\:/g, '\n{"title":').replace(/\]$/, '\n]');
-				fs.writeFile('log/chatrooms.json.0', data, function () {
+				fs.writeFile('config/chatrooms.json.0', data, function () {
 					// rename is atomic on POSIX, but will throw an error on Windows
-					fs.rename('log/chatrooms.json.0', 'log/chatrooms.json', function (err) {
+					fs.rename('config/chatrooms.json.0', 'config/chatrooms.json', function (err) {
 						if (err) {
 							// This should only happen on Windows.
-							fs.writeFile('log/chatrooms.json', data, finishWriting);
+							fs.writeFile('config/chatrooms.json', data, finishWriting);
 							return;
 						}
 						finishWriting();
