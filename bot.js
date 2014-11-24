@@ -58,7 +58,7 @@ var config = {
 		return toId(this.name);
 	},
 	group: '&',
-	customavatars: 'ultimatebot.gif',
+	customavatars: 'suicunebot.gif',
 	rooms: ['lobby'],
 	punishvals: {
 		1: 'warn',
@@ -418,18 +418,18 @@ var parse = {
 var commands = {
 	
 	about: function (target, room, user) {
-		if (!this.can('joinbattle')) return this.sendPm('Hola, soy el Bot de Viridian. Para más información sobre mi fucionamiento escribe .guia');
-		this.sendReply('Hola, soy el Bot de Viridian. Para más información sobre mi fucionamiento escribe .guia');
+		if (!this.can('joinbattle')) return this.sendPm('Hola, soy el Bot de Ultimate. Para más información sobre mi fucionamiento escribe .guia');
+		this.sendReply('Hola, soy el Bot de Ultimate. Para más información sobre mi fucionamiento escribe .guia');
 	},
 	
 	info: function (target, room, user) {
-		if (!this.can('joinbattle')) return this.sendPm('Hola, soy el Bot de Viridian. Para más información sobre mi fucionamiento escribe .guia');
-		this.sendReply('Hola, soy el Bot de Viridian. Para más información sobre mi fucionamiento escribe .guia');
+		if (!this.can('joinbattle')) return this.sendPm('Hola, soy el Bot de Ultimate. Para más información sobre mi fucionamiento escribe .guia');
+		this.sendReply('Hola, soy el Bot de Ultimate. Para más información sobre mi fucionamiento escribe .guia');
 	},
 	
 	foro: function (target, room, user) {
-		if (!this.can('joinbattle')) return this.sendPm('Foro del servidor Viridian: http://viridianshowdown.hol.es/');
-		this.sendReply('Foro del servidor Viridian: http://viridianshowdown.hol.es/');
+		if (!this.can('joinbattle')) return this.sendPm('Foro del servidor Ultimate: http://ultimatepsim.proboards.com/');
+		this.sendReply('Foro del servidor Ultimate: http://ultimatepsim.proboards.com/');
 	},
 	
 	guia: function (target, room, user) {
@@ -565,7 +565,7 @@ var commands = {
 	
 	vbw: function (target, room, user) {
 		if (!this.can('rangeban')) return;
-		this.sendPm('Frases Prohibidas en Viridian. Caracteres: ' + botBannedWords.chars + " | Contenido +18: " + botBannedWords.links + "| Lenguaje inapropiado: " + botBannedWords.inapropiate);
+		this.sendPm('Frases Prohibidas. Caracteres: ' + botBannedWords.chars + " | Contenido +18: " + botBannedWords.links + "| Lenguaje inapropiado: " + botBannedWords.inapropiate);
 	},
 
 	tell: function (target, room, user) {
@@ -631,6 +631,35 @@ var commands = {
 			this.sendReply(message);
 		};
 	})(),
+	
+	whois: function (target, room, user) {
+		if (!target) return;
+		if (target.length > 30) return;
+		var shopData = Shop.getBotPhrase(target);
+		if (shopData) return this.sendReply('Sobre ' + target + ': ' + shopData);
+		var targetUser = Users.get(target);
+		if (!targetUser) return this.sendReply('No se nada acerca de ' + target + '.');
+		switch (targetUser.group) {
+			case '~':
+				shopData = 'Administrador del servidor Ultimate';
+				break;
+			case '&':
+				shopData = 'Leader del servidor Ultimate';
+				break;
+			case '@':
+				shopData = 'Moderador del servidor Ultimate';
+				break;
+			case '%':
+				shopData = 'Driver del servidor Ultimate';
+				break;
+			case '+':
+				shopData = 'Voiced del servidor Ultimate';
+				break;
+			default:
+				shopData = 'Usuario del servidor Ultimate';
+		}
+		if (shopData) return this.sendReply('Sobre ' + target + ': ' + shopData );
+	},
 	
 	chiste: (function () {
 		var reply = [
