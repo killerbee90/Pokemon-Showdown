@@ -15,7 +15,7 @@ const REPORT_USER_STATS_INTERVAL = 1000 * 60 * 10;
 
 var fs = require("fs");
 var path = require("path");
-var temp_dir = path.join(process.cwd(), 'temp/');
+var temp_dir = path.join(process.cwd(), 'log/');
 
 if (!fs.existsSync(temp_dir))
     fs.mkdirSync(temp_dir);
