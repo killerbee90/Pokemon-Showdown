@@ -183,7 +183,90 @@ var HerokuDatabase = (function() {
 	return HerokuDatabase;
 })();
 
+// to load rooms, if chatrooms.json is downloaded after server start.
+Rooms.GlobalRoom.prototype.readChatRooms = function(){
+	var addrooms = [];
+	try{
+		addrooms = JSON.parse(fs.readFileSync('config/chatrooms.json'));
+		if (!Array.isArray(addrooms)) addrooms = [];
+	} catch(e){
+		addrooms = [];
+	}
+	for (var i = 0; i < addrooms.length; i++) {
+		if (!addrooms[i] || !addrooms[i].title) {
+			console.log('ERROR: Room number ' + i + ' has no data.');
+			continue;
+		}
+		var id = toId(addrooms[i].title);
+		if( (id == 'lobby'|| id == 'staff') && Rooms.rooms[id] ){
+			console.log("setting "+id+" data");
+			Rooms.rooms[id].introMessage = Rooms.rooms[id].chatRoomData.introMessage= addrooms[i].introMessage || '';
+			Rooms.rooms[id].desc = Rooms.rooms[id].chatRoomData.desc = addrooms[i].desc || '';
+		}
+		if( Rooms.rooms[id] )continue;
+		this.chatRoomData.push(addrooms[i]);
+		console.log("NEW CHATROOM: " + id);
+		var room = Rooms.rooms[id] = new Rooms.ChatRoom(id, addrooms[i].title, addrooms[i]);
+		this.chatRooms.push(room);
+		if (room.autojoin) this.autojoin.push(id);
+		if (room.staffAutojoin) this.staffAutojoin.push(id);
+	}
+	if( Config.HerokuDB ){
+		DatabaseManager.Heroku.initUserlists();
+	}
+};
 
+// This module can be used anywhere(not only on Heroku )
+
+var fileStorage = (function(){
+	function fileStorage(){
+		// links and file data.
+		// if not using on heroku, then change the db_url.
+		this.DB_URL = process.env.DATABASE_URL;
+		this.fileurls = {};
+		this.customavatars = {};
+		
+		try {
+			this.loadUrls();// only for PostGreSQL database.
+		} catch(e){
+			this.fileurls = {};
+			this.customavatars = {};
+		}
+		
+		// set the chatroom upload interval:
+		this.chatRoomUploader = setInterval( function(){
+			this.uploadChatRooms();
+		}.bind(this) , 60*60*1000 );
+		
+	}
+	fileStorage.prototype.dbtype = 'http';
+	
+	fileStorage.prototype.loadUrls = function(){
+		// initialises all file urls. 
+		var self = this;
+		require('pg').connect(this.DB_URL, function(err, client, done){
+			if(err){
+				console.log('error in loading urls for filestorage');
+				return;
+			}
+			var query = client.query('SELECT * FROM FILEURLS');
+			var avatars = client.query(' SELECT * FROM AVATARS ');
+			query.on('row',function(row){
+				self.fileurls[ row.type ] = row.link;
+			});
+			avatars.on('row',function(row){
+				self.customavatars[ row.userid ] = row.link;
+			});
+			query.on('end',function(row){
+				self.loadChatRooms();
+				self.loadOtherFiles('all');
+				avatars.on('end', function(row){
+					self.loadCustomAvatars();
+					done();
+				});
+			});
+		});
+	};
 	
 	/**************************
 	* Functions to dynamically upload/download files.
